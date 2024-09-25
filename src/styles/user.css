@@ -1,0 +1,44 @@
+/* src/styles.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0 0 0;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  th {
+    background-color: #8992ee;
+  }
+  td{
+    background-color: #cacdf0;
+  }
+  .btn {
+  margin-top: 1.5rem;
+    background-color: rgb(50, 50, 215); 
+    color: white;                     
+    border: none;                     
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+    background-color: rgb(30, 30, 180); 
+    transform: translateY(-2px); 
+  }
+
+  .loading{
+    font-size: larger;
+  }
+  .error{
+    font-size: large;
+    color: rgb(237, 35, 35);
+  }
