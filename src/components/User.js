@@ -17,14 +17,8 @@ const User = () => {
     try {
       const response = await axios.get('https://chitwanhumad.pythonanywhere.com/get-users', {
         headers: {
-          "Access-Control-Allow-Headers":"*",
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          "Cache-Control": "no-cache",
-          "Access-Control-Allow-Origin": "*",
-          'Access-Control-Allow-Methods': '*',
-          'Access-Control-Expose-Headers': '*',
-
+          'Accept': 'application/json'
         },
         auth: {
           username: username, 
