@@ -7,15 +7,15 @@ const User = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const url = 'https://chitwanhumad.pythonanywhere.com/get-users';
+  const url = 'https://chitwanhumad.pythonanywhere.com/get-users';
   const username = 'Aarti01'; 
-  const password = 'Aarti0925';
+  const password = 'Aarti0927';
 
   const fetchUsers = async () => {
     setLoading(true);
     setError(null); 
     try {
-      const response = await axios.get('https://chitwanhumad.pythonanywhere.com/get-users', {
+      const response = await axios.get(url, {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
