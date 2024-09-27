@@ -7,8 +7,6 @@ const UserTable = () => {
   const [error, setError] = useState(null);
 
   const url = 'https://chitwanhumad.pythonanywhere.com/get-users';
-  const username = 'Aarti01'; 
-  const password = 'Aarti0925';
 
   const fetchUsers = async () => {
     setLoading(true);
@@ -16,12 +14,14 @@ const UserTable = () => {
     try {
       const response = await axios.get('/get-users', {
         headers: {
-          "Access-Control-Allow-Headers":"Authorization",
-          'Content-Type': 'text/html',
+          "Access-Control-Allow-Headers": "Authorization",
+          "Content-Type": "application/json",
+          "Accept": "application/json",
         },
+        
         auth: {
-          username: username, 
-          password: password,  
+          username: import.meta.env.VITE_USER_NAME,
+          password: import.meta.env.VITE_PASSWORD, 
         },
       });
 
