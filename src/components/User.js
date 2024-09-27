@@ -15,18 +15,20 @@ const User = () => {
     setLoading(true);
     setError(null); 
     try {
-      const response = await axios.get(url, {
-        headers: {
-          // 'Authorization' : 'Basic QWFydGkwMTpBYXJ0aTA5Mjc=',
-          'Content-Type'  : 'application/html',
-          'Accept'  : 'application/html',
-          'Access-Control-Allow-Origin' : '*'
-        },
-        auth: {
-          username: username, 
-          password: password,  
-        },
-      });
+      // const response = await axios.get(url, {
+      //   headers: {
+      //     // 'Authorization' : 'Basic QWFydGkwMTpBYXJ0aTA5Mjc=',
+      //     'Content-Type'  : 'application/html',
+      //     'Accept'  : 'application/html',
+      //     'Access-Control-Allow-Origin' : '*'
+      //   },
+      //   auth: {
+      //     username: username, 
+      //     password: password,  
+      //   },
+      // });
+
+      const response = await fetch(url, { method: 'GET', headers: { 'Content-Type': 'application/html', 'Accept': 'application/html', 'Authorization': username && password ? `Basic ${btoa(`${username}:${password}`)}` : '' }, credentials: 'include' }).then(res => { if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`); return res.json(); });
 
       // Log the API response
       console.log('API Response:', response.data);
