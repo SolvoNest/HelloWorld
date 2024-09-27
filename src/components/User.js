@@ -18,7 +18,6 @@ const User = () => {
       const response = await axios.get(url, {
         headers: {
           'Authorization' : 'Basic QWFydGkwMTpBYXJ0aTA5Mjc=',
-          'Accept': 'application/html',
           'Content-Type'  : 'application/html',
           'Accept'  : 'application/html',
           'Access-Control-Allow-Origin' : '*'
