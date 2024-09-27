@@ -17,8 +17,11 @@ const User = () => {
     try {
       const response = await axios.get(url, {
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Authorization' : 'Basic QWFydGkwMTpBYXJ0aTA5Mjc=',
+          'Accept': 'application/html',
+          'Content-Type'  : 'application/html',
+          'Accept'  : 'application/html',
+          'Access-Control-Allow-Origin' : '*'
         },
         auth: {
           username: username, 
