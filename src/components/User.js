@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// import axios from 'axios';
+/*import React, { useState } from 'react';
+import axios from 'axios';
 import '../styles/user.css';
 
 const User = () => {
@@ -15,20 +15,19 @@ const User = () => {
     setLoading(true);
     setError(null); 
     try {
-      // const response = await axios.get(url, {
-      //   headers: {
-      //     // 'Authorization' : 'Basic QWFydGkwMTpBYXJ0aTA5Mjc=',
-      //     'Content-Type'  : 'application/html',
-      //     'Accept'  : 'application/html',
-      //     'Access-Control-Allow-Origin' : '*'
-      //   },
-      //   auth: {
-      //     username: username, 
-      //     password: password,  
-      //   },
-      // });
-
-      const response = await fetch(url, { method: 'GET', headers: { 'Content-Type': 'application/html', 'Accept': 'application/html', 'Authorization': username && password ? `Basic ${btoa(`${username}:${password}`)}` : '' }, credentials: 'include' }).then(res => { if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`); return res.json(); });
+      const response = await axios.get(url, {
+        headers: {
+          // 'Authorization' : 'Basic QWFydGkwMTpBYXJ0aTA5Mjc=',
+          'Content-Type'  : 'application/html',
+          'Accept'  : 'application/html',
+          'Access-Control-Allow-Origin' : '*',
+          'access-control-allow-origin':'*',
+        },
+        auth: {
+          username: username, 
+          password: password,  
+        },
+      });
 
       // Log the API response
       console.log('API Response:', response.data);
@@ -142,4 +141,61 @@ const User = () => {
 };
 
 export default User;
+*/
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../styles/user.css';
 
+const User = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const url = 'https://jsonplaceholder.typicode.com/users'; // Example URL
+
+  const fetchUsers = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(url);
+      setUsers(response.data); // Set the users directly from the response
+    } catch (error) {
+      setError('Error fetching user data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={fetchUsers}>Fetch User Data</button>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      
+      {users.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.phone}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+};
+
+export default User;
