@@ -21,7 +21,6 @@ const User = () => {
           'Content-Type'  : 'application/html',
           'Accept'  : 'application/html',
           'Access-Control-Allow-Origin' : '*',
-          //'access-control-allow-origin':'*',
         },
         auth: {
           username: username, 
